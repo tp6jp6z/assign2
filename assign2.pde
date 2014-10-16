@@ -29,8 +29,8 @@ PImage imgWinFrog, imgLoseFrog;
     boolean left; boolean right;
 
   //Car Speed
-    float speed1= 5; float speed2= 5;
-    float speed3= 5; float speed4= 5;
+    float speed1= 5; float speed2= 11;
+    float speed3= 15; float speed4= 8;
 
 // -------------------------------
 

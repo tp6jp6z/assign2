@@ -1,4 +1,5 @@
 // global variables
+int currentTime = 0;
 float frogX, frogY, frogW, frogH, frogInitX, frogInitY;
 float leftCar1X, leftCar1Y, leftCar1W, leftCar1H;//car1
 float leftCar2X, leftCar2Y, leftCar2W, leftCar2H;//car2
@@ -80,10 +81,11 @@ void draw(){
         text("Press Enter", width/3, height/2);    
         break;
     case FROG_DIE:
-        delay(1000);
-        frogX=frogInitX;
-        frogY=frogInitY;
-        gameState = GAME_RUN;
+        if(millis()-currentTime >= 1000){
+          frogX=frogInitX;
+          frogY=frogInitY;
+          gameState = GAME_RUN;
+        }
         break;
     case GAME_RUN:
         background(10,110,16);
@@ -168,6 +170,7 @@ void draw(){
          float leftCar1CX= leftCar1X+leftCar1W;
          float leftCar1CY= leftCar1Y+leftCar1H;
            if (frogCX>leftCar1X && frogCX<leftCar1CX && frogCY>leftCar1Y && frogCY<leftCar1CY){
+              currentTime = millis();
               image(imgDeadFrog,frogX,frogY);
               gameState= FROG_DIE;
               life--;
@@ -177,6 +180,7 @@ void draw(){
          float leftCar2CX= leftCar2X+leftCar2W;
          float leftCar2CY= leftCar2Y+leftCar2H;
            if (frogCX>leftCar2X && frogCX<leftCar2CX && frogCY>leftCar2Y && frogCY<leftCar2CY){
+              currentTime = millis();
               image(imgDeadFrog,frogX,frogY);
               gameState= FROG_DIE;
               life--;
@@ -186,6 +190,7 @@ void draw(){
          float rightCar1CX= rightCar1X+rightCar1W;
          float rightCar1CY= rightCar1Y+rightCar1H;
            if (frogCX>rightCar1X && frogCX<rightCar1CX && frogCY>rightCar1Y && frogCY<rightCar1CY){
+              currentTime = millis();
               image(imgDeadFrog,frogX,frogY);
               gameState= FROG_DIE;
               life--;
@@ -195,6 +200,7 @@ void draw(){
          float rightCar2CX= rightCar2X+rightCar2W;
          float rightCar2CY= rightCar2Y+rightCar2H;
            if (frogCX>rightCar2X && frogCX<rightCar2CX && frogCY>rightCar2Y && frogCY<rightCar2CY){
+              currentTime = millis();
               image(imgDeadFrog,frogX,frogY);
               gameState= FROG_DIE;
               life--;
